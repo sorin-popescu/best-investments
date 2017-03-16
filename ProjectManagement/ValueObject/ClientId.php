@@ -1,6 +1,6 @@
 <?php
 
-namespace DDD;
+namespace ProjectManagement\ValueObject;
 
 class ClientId
 {

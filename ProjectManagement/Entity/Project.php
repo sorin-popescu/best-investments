@@ -1,6 +1,12 @@
 <?php
 
-namespace  DDD;
+namespace  ProjectManagement\Entity;
+
+use ProjectManagement\ValueObject\ClientId;
+use ProjectManagement\ValueObject\ManagerId;
+use ProjectManagement\ValueObject\ProjectReference;
+use ProjectManagement\ValueObject\SpecialistId;
+use ProjectManagement\ValueObject\Status;
 
 class Project
 {
@@ -21,18 +27,18 @@ class Project
      */
     private $managerId;
 
-    private function __construct($name, $deadline, ClientId $clientId, Status $status)
+    private function __construct($name, $deadline, ClientId $clientId)
     {
         //TODO: publish event to notify project is setup
         $this->name = $name;
         $this->deadline = $deadline;
-        $this->reference = new ProjectReference();
+        $this->reference = ProjectReference::generate();
         $this->clientId = $clientId;
-        $this->status = $status;
+        $this->status = Status::draft();
     }
 
-    public static function setUp($name, $deadline, ClientId $clientId, Status $status) {
-        return new Project($name, $deadline, $clientId, $status);
+    public static function setUp($name, $deadline, ClientId $clientId) {
+        return new Project($name, $deadline, $clientId);
     }
 
     public function start(ManagerId $managerId)

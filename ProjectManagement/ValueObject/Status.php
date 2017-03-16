@@ -1,12 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: sorin.popescu
- * Date: 13/03/2017
- * Time: 16:24
- */
 
-namespace DDD;
+namespace ProjectManagement\ValueObject;
 
 
 class Status
