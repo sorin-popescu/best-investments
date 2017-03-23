@@ -10,19 +10,17 @@ class Prospect
 
     private $status;
 
-    public function __construct(PotentialSpecialist $potentialSpecialist)
+    public function __construct()
     {
-        $this->potentialSpecialist = $potentialSpecialist;
-    }
-
-    public function register()
-    {
-        $this->status = 'registered';
-        return new Specialist($this->potentialSpecialist);
     }
 
     public function notInterested()
     {
         $this->status = 'not interested';
+    }
+
+    public function interested()
+    {
+
     }
 }

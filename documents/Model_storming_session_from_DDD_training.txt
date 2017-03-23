@@ -1,0 +1,80 @@
+SCHEDULING CONSULTATION
+
+    Idea 1 - Project as aggregate root
+
+    This would work but we ought to consider that we cannot ever talk about a consultation without going through the project, will that cause any complications?
+
+    Consultation
+
+    Project
+
+        consultations
+
+        scheduleConsultation(startTime, specialistID)
+            guard that this project is active
+
+            guard that specialist is approved for this project
+
+            add new consultaiton to this.consultations
+
+
+    ------
+
+    Idea 2 - Consultation as aggregate root with project inside
+
+    This would require us to rethink how we start a project, we deal with projects without consultations. This may not be valid...
+
+    Constulation
+
+        construct(specialistId, ProjectId, startTime)
+            guard that the project with Project Id is active
+
+            guard that specialist with that ID is approved for this project
+
+    -------
+
+    Idea 3 - Factory method for consultation on Project Entity
+
+    This works but what prevents a client making a consultation without our guards in place? Anyone can new Consultation()
+
+    Consultation
+
+    Project
+
+
+        scheduleConsultation(startTime, specialistID)
+            guard that this project is active
+
+            guard that specialist is approved for this project
+
+            return new consultaiton(specialistId, ProjectId, startTime)
+
+
+REPORTING A CONSULTATION
+
+
+    Consultation
+
+    Project
+
+        consultations
+
+        scheduleConsultation(startTime, specialistID)
+            guard that this project is active
+
+            guard that specialist is approved for this project
+
+            add new consultaiton to this.consultations
+
+        reportConstulation(duration, consultationId)
+
+
+
+    How the client code would look....
+
+    project = projectRepo.projectWithReference(reference)
+    project.reportConsultation(duration, consultationId)
+    projectRepo.save(project)
+
+
+CLOSING A PROJECT....

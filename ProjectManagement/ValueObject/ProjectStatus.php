@@ -3,10 +3,11 @@
 namespace ProjectManagement\ValueObject;
 
 
-class Status
+class ProjectStatus
 {
     const DRAFT = 'draft';
-    const STARTED = 'started';
+    const ACTIVE = 'active';
+    const CLOSED = 'closed';
 
     private $status;
 
@@ -17,12 +18,12 @@ class Status
 
     public static function draft()
     {
-        return new Status(self::DRAFT);
+        return new ProjectStatus(self::DRAFT);
     }
 
-    public static function started()
+    public static function active()
     {
-        return new Status('started');
+        return new ProjectStatus(self::ACTIVE);
     }
 
     public function isDraft()
@@ -30,8 +31,8 @@ class Status
         return $this->status == self::DRAFT;
     }
 
-    public function isStarted()
+    public function isActive()
     {
-        return $this->status == self::STARTED;
+        return $this->status === self::ACTIVE;
     }
 }
