@@ -26,6 +26,11 @@ class ProjectStatus
         return new ProjectStatus(self::ACTIVE);
     }
 
+    public static function closed()
+    {
+        return new ProjectStatus(self::CLOSED);
+    }
+
     public function isDraft()
     {
         return $this->status == self::DRAFT;
@@ -34,5 +39,10 @@ class ProjectStatus
     public function isActive()
     {
         return $this->status === self::ACTIVE;
+    }
+
+    public function isNotActive()
+    {
+        return $this->status !== self::ACTIVE;
     }
 }

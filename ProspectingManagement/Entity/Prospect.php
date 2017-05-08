@@ -2,25 +2,22 @@
 
 namespace ProspectingManagement\Entity;
 
-use ProjectManagement\ValueObject\PotentialSpecialist;
+use ProspectingManagement\ValueObject\ProspectStatus;
 
 class Prospect
 {
-    private $potentialSpecialist;
+    private $id;
 
     private $status;
 
-    public function __construct()
+    public function __construct(ProspectId $prospectId)
     {
+        $this->id = $prospectId;
+        $this->status =ProspectStatus::interested();
     }
 
-    public function notInterested()
+    public static function get(ProspectId $prospectId)
     {
-        $this->status = 'not interested';
-    }
-
-    public function interested()
-    {
-
+        return new Prospect($prospectId);
     }
 }

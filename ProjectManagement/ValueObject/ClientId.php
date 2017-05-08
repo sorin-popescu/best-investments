@@ -6,15 +6,12 @@ class ClientId
 {
     private $clientId;
 
-    public function __construct()
+    public function __construct($clientId)
     {
-        $this->clientId = '1234';
+        $this->clientId = $clientId;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getClientId()
+    public function __toString(): string
     {
         return $this->clientId;
     }

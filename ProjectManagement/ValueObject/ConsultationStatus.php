@@ -5,7 +5,8 @@ namespace ProjectManagement\ValueObject;
 class ConsultationStatus
 {
     const OPENED = 'opened';
-    const CLOSED = 'closed';
+    const CONFIRMED = 'confirmed';
+    const DISCARDED = 'discarded';
 
     private $status;
 
@@ -19,18 +20,23 @@ class ConsultationStatus
         return new ConsultationStatus(self::OPENED);
     }
 
-    public static function closed()
+    public static function confirmed()
     {
-        return new ConsultationStatus(self::CLOSED);
+        return new ConsultationStatus(self::CONFIRMED);
     }
 
-    public function isOpened()
+    public static function discarded()
     {
-        return $this->status === self::OPENED;
+        return new ConsultationStatus(self::DISCARDED);
     }
 
-    public function isClosed()
+    public function isNotOpened()
     {
-        return $this->status === self::CLOSED;
+        return $this->status !== self::OPENED;
+    }
+
+    public function isConfirmed()
+    {
+        return $this->status === self::CONFIRMED;
     }
 }

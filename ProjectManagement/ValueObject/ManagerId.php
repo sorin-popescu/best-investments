@@ -5,8 +5,15 @@ namespace ProjectManagement\ValueObject;
 
 class ManagerId
 {
-    public function __construct()
-    {
+    private $managerId;
 
+    public function __construct(int $managerId)
+    {
+        $this->managerId = $managerId;
+    }
+
+    public function __toString(): string
+    {
+        return $this->managerId;
     }
 }

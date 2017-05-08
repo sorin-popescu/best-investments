@@ -4,11 +4,14 @@ namespace ProjectManagement\ValueObject;
 
 class PotentialSpecialistList
 {
-    private $potentialSpecialistList;
+    /**
+     * @var PotentialSpecialistId
+     */
+    private $id;
 
     private function __construct()
     {
-
+        $this->id =
     }
 
     public static function add()
